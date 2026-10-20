@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ExpenseFlow</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast"></div>
+
+<section id="loginScreen" class="login-screen">
+  <div class="login-left">
+    <div class="logo white"><span>↗</span> ExpenseFlow</div>
+    <div class="hero-copy">
+      <small>PERSONAL FINANCE, SIMPLIFIED</small>
+      <h1>Know where your<br><em>money goes.</em></h1>
+      <p>Take control of your spending and make every rupee count.</p>
+      <div class="stats">
+        <div><b>01</b><span>Track<br>spending</span></div>
+        <div><b>02</b><span>Understand<br>patterns</span></div>
+        <div><b>03</b><span>Build better<br>habits</span></div>
+      </div>
+      <div class="login-chart">
+  <div class="login-chart-heading">
+    <div>
+      <strong>Your money, in perspective</strong>
+      <small>A simple view of your finances</small>
+    </div>
+    <span class="chart-badge">OVERVIEW</span>
+  </div>
+
+  <div class="login-chart-legend">
+    <span><i class="legend-income"></i> Income</span>
+    <span><i class="legend-expense"></i> Expenses</span>
+  </div>
+
+  <div class="login-chart-bars">
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:82%"></span>
+        <span class="login-bar expense-bar" style="height:46%"></span>
+      </div>
+      <small>Jan</small>
+    </div>
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:92%"></span>
+        <span class="login-bar expense-bar" style="height:58%"></span>
+      </div>
+      <small>Feb</small>
+    </div>
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:72%"></span>
+        <span class="login-bar expense-bar" style="height:40%"></span>
+      </div>
+      <small>Mar</small>
+    </div>
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:100%"></span>
+        <span class="login-bar expense-bar" style="height:62%"></span>
+      </div>
+      <small>Apr</small>
+    </div>
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:86%"></span>
+        <span class="login-bar expense-bar" style="height:48%"></span>
+      </div>
+      <small>May</small>
+    </div>
+    <div class="login-chart-group">
+      <div class="login-chart-columns">
+        <span class="login-bar income-bar" style="height:96%"></span>
+        <span class="login-bar expense-bar" style="height:55%"></span>
+      </div>
+      <small>Jun</small>
+    </div>
+  </div>
+
+  <p class="login-chart-note">
+    Illustrative chart · Sign in to explore your transactions
+  </p>
+</div>
+    </div>
+  </div>
+
+  <div class="login-right">
+    <div class="login-box">
+      <div class="logo"><span>↗</span> ExpenseFlow</div>
+      <h2>Welcome back</h2>
+      <p>Sign in to your financial dashboard.</p>
+
+      <form id="loginForm">
+        <label>Email address
+          <input id="email" type="email" value="demo@example.com" required>
+        </label>
+        <label>Password
+          <input id="password" type="password" value="demo123" required>
+        </label>
+        <button class="btn primary full">Sign in <b>→</b></button>
+      </form>
+
+      <div class="demo">
+        <b>Demo account</b><br>
+        demo@example.com &nbsp; / &nbsp; demo123
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="app" class="hidden">
+  <aside class="sidebar">
+    <div class="logo"><span>↗</span> ExpenseFlow</div>
+
+    <nav>
+      <button class="nav active" data-page="overview">⌂ <span>Overview</span></button>
+      <button class="nav" data-page="transactions">↔ <span>Transactions</span></button>
+      <button class="nav" data-page="analytics">◔ <span>Analytics</span></button>
+    </nav>
+
+    <div class="sidebar-tip">
+      <b>✦ Money tip</b>
+      <p>Small, consistent tracking habits make budgeting much easier.</p>
+    </div>
+
+    <button id="logout" class="logout">↪ Log out</button>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <small>PERSONAL FINANCE</small>
+        <h2 id="greeting">Good evening</h2>
+      </div>
+      <div class="user">
+        <div id="avatar">D</div>
+        <span id="username">Demo User</span>
+      </div>
+    </header>
+
+    <section id="overviewPage">
+      <div class="balance-card">
+        <div>
+          <small>TOTAL BALANCE</small>
+          <h1 id="balance">₹0</h1>
+          <p>Income minus recorded expenses</p>
+        </div>
+        <div class="balance-actions">
+          <button id="expenseBtn" class="btn outline">− Add expense</button>
+          <button id="incomeBtn" class="btn light">＋ Add income</button>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric"><i class="green">↗</i><span>Total income<small>All recorded income</small></span><b id="income">₹0</b></div>
+        <div class="metric"><i class="red">↘</i><span>Total expenses<small>All recorded spending</small></span><b id="expense">₹0</b></div>
+        <div class="metric"><i class="gold">◈</i><span>Savings rate<small>Income kept</small></span><b id="savingRate">0%</b></div>
+      </div>
+
+      <div class="two-col">
+        <article class="card">
+          <div class="card-head">
+            <div><h3>Spending by category</h3><p>See where your money is going.</p></div>
+          </div>
+          <div id="categoryBars"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <div><h3>Recent activity</h3><p>Your latest transactions.</p></div>
+            <button class="text-btn" data-page="transactions">View all →</button>
+          </div>
+          <div id="recent"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="transactionsPage" class="hidden">
+      <article class="card">
+        <div class="card-head">
+          <div><h3>Transactions</h3><p>Manage your recorded income and expenses.</p></div>
+          <button id="newTransaction" class="btn primary">＋ New transaction</button>
+        </div>
+        <div class="filters">
+          <input id="search" placeholder="Search transactions...">
+          <select id="typeFilter"><option value="ALL">All types</option><option value="INCOME">Income</option><option value="EXPENSE">Expense</option></select>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Transaction</th><th>Category</th><th>Date</th><th>Type</th><th>Amount</th><th>Action</th></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <section id="analyticsPage" class="hidden">
+      <div class="two-col">
+        <article class="card">
+          <div class="card-head"><div><h3>Expense distribution</h3><p>Category-level spending.</p></div></div>
+          <div id="analyticsBars"></div>
+        </article>
+        <article class="card">
+          <div class="card-head"><div><h3>Quick insights</h3><p>Automatically calculated from your data.</p></div></div>
+          <div id="insights"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+</section>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-backdrop" id="closeModal"></div>
+  <div class="modal-box">
+    <button class="modal-x" id="closeX">×</button>
+    <small>NEW TRANSACTION</small>
+    <h2 id="modalTitle">Add expense</h2>
+    <p>Save this entry to your MySQL database.</p>
+
+    <form id="transactionForm">
+      <div class="toggle">
+        <button type="button" id="chooseExpense" class="selected">Expense</button>
+        <button type="button" id="chooseIncome">Income</button>
+      </div>
+
+      <div class="form-grid">
+        <label>Amount<input id="amount" type="number" step="0.01" min="0.01" required></label>
+        <label>Date<input id="date" type="date" required></label>
+      </div>
+
+      <label>Category<select id="category" required></select></label>
+      <label>Description<input id="description" maxlength="255" placeholder="e.g. groceries, salary, fuel..."></label>
+
+      <button class="btn primary full">Save transaction <b>→</b></button>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
